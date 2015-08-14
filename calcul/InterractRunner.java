@@ -1,3 +1,4 @@
+package calcul;
 
 import java.util.Scanner;
 

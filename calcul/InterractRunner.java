@@ -2,44 +2,50 @@ package calcul;
 
 import java.util.Scanner;
 
-class Calculator {
-
-	private int result;
-
-	public void add(int... parameters) {
-		for (Integer param : parameters) {
-			this.setResult(this.getResult() + param);
-		}
-	}
-
-	public void cleanResult() {
-		this.result = 0;
-	}
-
-
-	public int getResult() {
-		return result;
-	}
-
-	public void setResult(int result) {
-		this.result = result;
-	}
-
-}
-
 public class InterractRunner {
+	Calculatorik cal = new Calculatorik();
+
 	public static void main(String[] args) {
+		new InterractRunner().runCalc();
+	}
+
+	public void choice(int aa) {
+
+	}
+
+	public void runCalc() {
+		String ch = "";
 		Scanner reader = new Scanner(System.in);
 
 		try {
-			Calculator cal = new Calculator();
+
 			String exit = "no";
 			while (!exit.equalsIgnoreCase("yes")) {
-				System.out.println("Enter first arg: ");
+				System.out.println("Enter first number: ");
 				String first = reader.next();
-				System.out.println("Enter second arg: ");
+				System.out.println("+ , - , /, *  ");
+				String znak = reader.next();
+				System.out.println("Enter second number: ");
 				String second = reader.next();
-				cal.add(Integer.valueOf(first), Integer.valueOf(second));
+
+				switch (znak) {
+				case "+":
+					cal.add(Integer.valueOf(first), Integer.valueOf(second));
+					break;
+				case "-":
+					cal.minus(Integer.valueOf(first), Integer.valueOf(second));
+					break;
+				case "/":
+					cal.div(Integer.valueOf(first), Integer.valueOf(second));
+					break;
+				case "*":
+					cal.mult(Integer.valueOf(first), Integer.valueOf(second));
+					break;
+
+				default:
+					break;
+				}
+
 				System.out.println("result: " + cal.getResult());
 				cal.cleanResult();
 				System.out.println("Exit yes or no ");
